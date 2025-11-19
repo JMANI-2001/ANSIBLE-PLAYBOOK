@@ -1,0 +1,10 @@
+---
+# vars file for aws_provision
+region: "ap-south-1"
+instance_type: "t3.micro"
+ami_id: "ami-0d176f79571d18a8f"
+keypair: "new_key_ansi"
+sg_name: "freestyle-sg"
+role_name: "EC2-SSM-Role"
+instance_profile_name: "EC2-SSM-InstanceProfile"
+tag_name: "Freestyle-Ansible-Instance"

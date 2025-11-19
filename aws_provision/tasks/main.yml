@@ -1,0 +1,7 @@
+---
+# tasks file for aws_provision
+---
+- include_tasks: create_sg.yml
+- include_tasks: create_iam.yml
+- include_tasks: create_ec2.yml
+- include_tasks: create_eip.yml

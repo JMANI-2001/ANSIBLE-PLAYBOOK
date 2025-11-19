@@ -1,0 +1,15 @@
+---
+- name: Create security group
+  amazon.aws.ec2_group:
+    name: "{{ sg_name }}"
+    description: "Security Group created by Jenkins freestyle"
+    region: "{{ region }}"
+    rules:
+      - proto: tcp
+        from_port: 22
+        to_port: 22
+        cidr_ip: 0.0.0.0/0
+    rules_egress:
+      - proto: -1
+        cidr_ip: 0.0.0.0/0
+  register: sg_output
