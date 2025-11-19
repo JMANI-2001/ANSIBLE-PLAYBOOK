@@ -1,0 +1,9 @@
+---
+# vars file for roles/ec2_instance
+
+region: ap-south-1
+instance_type: t3.micro
+ami_id: ami-0d176f79571d18a8f
+security_group: sg-0ce8de840b341f377
+key_name: alc_01_key
+launch_template: lt-033c250a51dd4e720

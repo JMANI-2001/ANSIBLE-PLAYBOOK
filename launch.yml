@@ -1,8 +1,9 @@
 ---
-- name: Provision AWS infra using Freestyle Job
+- name: Launch EC2 instance using role
   hosts: localhost
   connection: local
   gather_facts: no
 
   roles:
-    - aws_provision
+    - ec2_instance
+
