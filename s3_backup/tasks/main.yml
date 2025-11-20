@@ -1,18 +1,26 @@
 ---
-- name: Create backup directory
-  file:
-    path: "{{ backup_dir }}"
-    state: directory
-    mode: '0755'
+- hosts: localhost
+  connection: local
+  vars:
+    backup_dir: "/backup"
+    backup_source_dir: "/var/www/html"
+    s3_bucket_name: "mani-daily-backup-bucket"
 
-- name: Set backup filename (date only)
-  set_fact:
-    backup_file: "html-backup-{{ ansible_date_time.date }}.tar.gz"
+  tasks:
+    - name: Create backup directory
+      file:
+        path: "{{ backup_dir }}"
+        state: directory
+        mode: "0755"
 
-- name: Create a compressed backup of the source directory
-  command: >
-    tar -czf {{ backup_dir }}/{{ backup_file }} {{ backup_source_dir }}
+    - name: Set backup filename (date only)
+      set_fact:
+        backup_file: "html-backup-{{ ansible_date_time.date }}.tar.gz"
 
-- name: Upload backup to S3 bucket
-  command: >
-    aws s3 cp {{ backup_dir }}/{{ backup_file }} s3://{{ s3_bucket_name }}/
+    - name: Create a compressed backup of the source directory
+      command: >
+        tar -czf {{ backup_dir }}/{{ backup_file }} {{ backup_source_dir }}
+
+    - name: Upload backup to S3 bucket
+      command: >
+        aws s3 cp {{ backup_dir }}/{{ backup_file }} s3://{{ s3_bucket_name }}/
