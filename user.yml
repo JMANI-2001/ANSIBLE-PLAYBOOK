@@ -10,7 +10,7 @@
     - name: Create the user
       user:
         name: "{{ username }}"
-        password: "{{ password | password_hash('sha512'}}"
+        password: "{{ password | password_hash('sha512')}}"
         shell: /bin/bash
         state: present
 ...
