@@ -1,0 +1,3 @@
+backup_source_dir: "/var/www/html"
+backup_dir: "/backup"
+s3_bucket_name: "mani-daily-backup-bucket"
