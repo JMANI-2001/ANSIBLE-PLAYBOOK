@@ -1,17 +1,16 @@
 ---
 - name: To create a file and directory in servers
   hosts:
-    - localhost
     - web
   become: yes
   tasks:
     - name: To create file
       file:
-        path: file1.txt
+        path: /home/ec2-user/file1.txt
         state: touch
 
     - name: To create directory
       file:
-        path: files
+        path: /home/ec2-user/files
         state: directory
 ...
