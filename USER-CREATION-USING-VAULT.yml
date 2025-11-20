@@ -1,0 +1,16 @@
+---
+- name: Create user with vault password
+  hosts: web
+  become: yes
+
+  vars_files:
+    - vars/user.yml 
+
+  tasks:
+    - name: Create the user
+      user:
+        name: "{{ username }}"
+        password: "{{ password | password_hash('sha512'}}"
+        shell: /bin/bash
+        state: present
+...
